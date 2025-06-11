@@ -1,0 +1,13 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🚀 Running pre-commit checks..."
+
+# Run Biome for linting
+echo "🧹 Running formatter..."
+pnpm lint || {
+  echo "❌ Format check failed. Please run 'pnpm format' to fix the issues."
+  exit 1
+}
+
+echo "✅ Pre-commit checks passed!"
